@@ -1,3 +1,4 @@
+import resumeQr from "./resume_qr.png";
 export const scaleFactor = 4;
 
 export const dialogueData = {
@@ -13,7 +14,7 @@ export const dialogueData = {
   "This is where dreams turn into reality!"`,
   resume: `This is my desk and on it is my resume. 
   <br/>
-  <img src="/resume_qr.png" alt="Resume QR code" width="150" height="150" />
+    <img src="${resumeQr}" alt="Resume QR code" width="150" height="150" />
   <br/>
   // <a href="https://github.com/CodeRockerr/Resume/blob/main/Resume_Adit.pdf" target="_blank">Check it out!</a>
   Ping me at shahadit62@gmail.com if you have any interesting Summer Internship opportunities!`,
