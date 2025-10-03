@@ -17,7 +17,7 @@ export const dialogueData = {
     <img src="${resumeQr}" alt="Resume QR code" width="150" height="150" />
   <br/>
   Scan the QR Code and find my Resume!
-  Ping me at <a href="mailto:shahadit62@gmail.com">shahadit62@gmail.com</a> if you have any interesting Summer Internship opportunities!`,
+  Ping me at <a href="mailto:ashah45@ncsu.edu">ashah45@ncsu.edu</a> or <a href="mailto:shahadit62@gmail.com">shahadit62@gmail.com</a> if you have any interesting Summer 2026 Internship opportunities!`,
   projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
   Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas. Learn more about how to use
   Kaboom.js by watching some of the tutorials from this yooutbe channels - <a href="https://youtube.com/@jslegenddev" target="_blank">here</a>.`,
