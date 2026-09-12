@@ -1,208 +1,139 @@
-import { dialogueData, scaleFactor } from "./constants.js";
-import { k } from "./kaboomctx.js";
-import { displayDialogue, setCamScale } from "./utils.js";
+document.body.classList.remove("no-js");
 
-k.loadSprite("spritesheet", "./spritesheet.png", {
-  sliceX: 39,
-  sliceY: 31,
-  anims: {
-    "idle-down": 936,
-    "walk-down": { from: 936, to: 939, loop: true, speed: 8 },
-    "idle-side": 975,
-    "walk-side": { from: 975, to: 978, loop: true, speed: 8 },
-    "idle-up": 1014,
-    "walk-up": { from: 1014, to: 1017, loop: true, speed: 8 },
-  },
+const menu = document.querySelector(".menu-toggle");
+const nav = document.querySelector("#main-nav");
+const closeMenu = () => {
+  menu?.setAttribute("aria-expanded", "false");
+  nav?.classList.remove("is-open");
+};
+menu?.addEventListener("click", () => {
+  const open = menu.getAttribute("aria-expanded") !== "true";
+  menu.setAttribute("aria-expanded", String(open));
+  nav.classList.toggle("is-open", open);
+});
+nav?.addEventListener("click", (event) => {
+  if (event.target.closest("a")) closeMenu();
+});
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    menu?.getAttribute("aria-expanded") === "true"
+  ) {
+    closeMenu();
+    menu.focus();
+  }
+});
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".site-header")) closeMenu();
 });
 
-k.loadSprite("map", "./map.png");
+function setupContentInteractions(scope = document) {
+  scope.querySelectorAll("[data-copy-email]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const card = button.closest(".contact-primary");
+      const address = card.querySelector(".direct-email").textContent;
+      const status = card.querySelector(".copy-email-status");
+      try {
+        await navigator.clipboard.writeText(address);
+        status.textContent =
+          "Email address copied. Paste it into your preferred email app.";
+      } catch {
+        status.textContent = `Copy this address: ${address}`;
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(card.querySelector(".direct-email"));
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+      }
+    });
+  });
+  scope.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      let visible = 0;
+      scope
+        .querySelectorAll("[data-filter]")
+        .forEach((other) =>
+          other.setAttribute("aria-pressed", String(other === button)),
+        );
+      scope.querySelectorAll(".project-card").forEach((card) => {
+        card.hidden =
+          filter !== "All projects" && card.dataset.category !== filter;
+        if (!card.hidden) visible++;
+      });
+      scope.querySelector("#filter-status").textContent =
+        `${visible} ${visible === 1 ? "project" : "projects"} shown.`;
+    });
+  });
+  scope.querySelectorAll("[data-project]").forEach((button) => {
+    const dialog = document.getElementById(`project-${button.dataset.project}`);
+    button.addEventListener("click", () => {
+      dialog._opener = button;
+      dialog.showModal();
+    });
+    if (dialog.dataset.bound) return;
+    dialog.dataset.bound = "true";
+    dialog
+      .querySelector(".dialog-close")
+      .addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      const rect = dialog.getBoundingClientRect();
+      if (
+        event.target === dialog &&
+        (event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom)
+      )
+        dialog.close();
+    });
+    dialog.addEventListener(
+      "close",
+      () =>
+        dialog._opener?.isConnected &&
+        dialog._opener.focus({ preventScroll: true }),
+    );
+  });
+}
 
-k.setBackground(k.Color.fromHex("#311047"));
+if (document.body.dataset.page === "feedback") {
+  import("./feedback.js").then(({ setupFeedback }) => setupFeedback());
+}
 
-k.scene("main", async () => {
-  const mapData = await (await fetch("./map.json")).json();
-  const layers = mapData.layers;
+if (document.body.dataset.page === "aequitas") {
+  import("./feature-lab.js").then(({ setupFeatureLab }) => setupFeatureLab());
+}
 
-  const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
-
-  const player = k.make([
-    k.sprite("spritesheet", { anim: "idle-down" }),
-    k.area({
-      shape: new k.Rect(k.vec2(0, 3), 10, 10),
-    }),
-    k.body(),
-    k.anchor("center"),
-    k.pos(),
-    k.scale(scaleFactor),
-    {
-      speed: 250,
-      direction: "down",
-      isInDialogue: false,
-    },
-    "player",
-  ]);
-
-  for (const layer of layers) {
-    if (layer.name === "boundaries") {
-      for (const boundary of layer.objects) {
-        map.add([
-          k.area({
-            shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
-          }),
-          k.body({ isStatic: true }),
-          k.pos(boundary.x, boundary.y),
-          boundary.name,
-        ]);
-
-        if (boundary.name) {
-          player.onCollide(boundary.name, () => {
-            player.isInDialogue = true;
-            displayDialogue(
-              dialogueData[boundary.name],
-              () => (player.isInDialogue = false)
+if (document.body.dataset.page === "overview") {
+  import("./studio.js").then(({ setupStudio }) => setupStudio());
+  setupContentInteractions();
+}
+if (["contact", "achievements"].includes(document.body.dataset.page))
+  setupContentInteractions();
+if (document.body.dataset.page === "home") {
+  import("./game.js")
+    .then(({ setupGame }) =>
+      setupGame({
+        onPanelOpen(id, scope) {
+          setupContentInteractions(scope);
+          if (id === "feedback")
+            import("./feedback.js").then(({ setupFeedback }) => {
+              if (document.getElementById("feedback-form")) setupFeedback();
+            });
+          if (id === "aequitas")
+            import("./feature-lab.js").then(({ setupFeatureLab }) =>
+              setupFeatureLab(),
             );
-          });
-        }
-      }
-
-      continue;
-    }
-
-    if (layer.name === "spawnpoints") {
-      for (const entity of layer.objects) {
-        if (entity.name === "player") {
-          player.pos = k.vec2(
-            (map.pos.x + entity.x) * scaleFactor,
-            (map.pos.y + entity.y) * scaleFactor
-          );
-          k.add(player);
-          continue;
-        }
-      }
-    }
-  }
-
-  setCamScale(k);
-
-  k.onResize(() => {
-    setCamScale(k);
-  });
-
-  k.onUpdate(() => {
-    k.camPos(player.worldPos().x, player.worldPos().y - 100);
-  });
-
-  k.onMouseDown((mouseBtn) => {
-    if (mouseBtn !== "left" || player.isInDialogue) return;
-
-    const worldMousePos = k.toWorld(k.mousePos());
-    player.moveTo(worldMousePos, player.speed);
-
-    const mouseAngle = player.pos.angle(worldMousePos);
-
-    const lowerBound = 50;
-    const upperBound = 125;
-
-    if (
-      mouseAngle > lowerBound &&
-      mouseAngle < upperBound &&
-      player.curAnim() !== "walk-up"
-    ) {
-      player.play("walk-up");
-      player.direction = "up";
-      return;
-    }
-
-    if (
-      mouseAngle < -lowerBound &&
-      mouseAngle > -upperBound &&
-      player.curAnim() !== "walk-down"
-    ) {
-      player.play("walk-down");
-      player.direction = "down";
-      return;
-    }
-
-    if (Math.abs(mouseAngle) > upperBound) {
-      player.flipX = false;
-      if (player.curAnim() !== "walk-side") player.play("walk-side");
-      player.direction = "right";
-      return;
-    }
-
-    if (Math.abs(mouseAngle) < lowerBound) {
-      player.flipX = true;
-      if (player.curAnim() !== "walk-side") player.play("walk-side");
-      player.direction = "left";
-      return;
-    }
-  });
-
-  function stopAnims() {
-    if (player.direction === "down") {
-      player.play("idle-down");
-      return;
-    }
-    if (player.direction === "up") {
-      player.play("idle-up");
-      return;
-    }
-
-    player.play("idle-side");
-  }
-
-  k.onMouseRelease(stopAnims);
-
-  k.onKeyRelease(() => {
-    stopAnims();
-  });
-  k.onKeyDown((key) => {
-    const keyMap = [
-      k.isKeyDown("right"),
-      k.isKeyDown("left"),
-      k.isKeyDown("up"),
-      k.isKeyDown("down"),
-    ];
-
-    let nbOfKeyPressed = 0;
-    for (const key of keyMap) {
-      if (key) {
-        nbOfKeyPressed++;
-      }
-    }
-
-    if (nbOfKeyPressed > 1) return;
-
-    if (player.isInDialogue) return;
-    if (keyMap[0]) {
-      player.flipX = false;
-      if (player.curAnim() !== "walk-side") player.play("walk-side");
-      player.direction = "right";
-      player.move(player.speed, 0);
-      return;
-    }
-
-    if (keyMap[1]) {
-      player.flipX = true;
-      if (player.curAnim() !== "walk-side") player.play("walk-side");
-      player.direction = "left";
-      player.move(-player.speed, 0);
-      return;
-    }
-
-    if (keyMap[2]) {
-      if (player.curAnim() !== "walk-up") player.play("walk-up");
-      player.direction = "up";
-      player.move(0, -player.speed);
-      return;
-    }
-
-    if (keyMap[3]) {
-      if (player.curAnim() !== "walk-down") player.play("walk-down");
-      player.direction = "down";
-      player.move(0, player.speed);
-    }
-  });
-});
-
-k.go("main");
+        },
+      }),
+    )
+    .catch((error) => {
+      console.error("Unable to initialize the game", error);
+      const welcome = document.querySelector(".game-welcome");
+      welcome.dataset.error = "true";
+      welcome.hidden = false;
+      welcome.querySelector("h2").textContent = "The game could not start.";
+      welcome.querySelector("p").textContent =
+        "Use Read portfolio to explore all my work.";
+    });
+}

@@ -6,6 +6,7 @@ export const dialogueData = {
     Here is my <a href="https://www.github.com/CodeRockerr" target="_blank">Github</a>!`,
   "cs-degree": `My name is Adit Shah. I am a Master's in Computer Science Student at North Carolina State University. These are my Social media profiles. You can check it out here and also hit that follow button! - 
   <a href="https://www.linkedin.com/in/shah-adit0404/" target="_blank">LinkedIn</a>
+  <a href="https://scholar.google.com/citations?user=Opd4raEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
   <a href="https://www.instagram.com/adit_4403/" target="_blank">Instagram</a>`,
   "sofa-table": `That's my sofa. I like to relax here and watch YouTube. 
   I often find myself coding here, to be honest.`,
@@ -21,6 +22,8 @@ export const dialogueData = {
   projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
   Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas. Learn more about how to use
   Kaboom.js by watching some of the tutorials from this yooutbe channels - <a href="https://youtube.com/@jslegenddev" target="_blank">here</a>.`,
-  library: `There are a lot of programming books on my shelves. This is just a showcase as I don't read any of them! `,
+  library: `Explore my research and publications, including work on machine learning for advanced driver assistance systems and agricultural trade.
+  <br/>
+  <a href="https://scholar.google.com/citations?user=Opd4raEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">View my publications on Google Scholar</a>`,
   exit: `If you want to exit my portfolio, just close the tab.`,
 };
