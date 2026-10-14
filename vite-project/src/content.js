@@ -65,6 +65,19 @@ export const experience = [
       "Scaled the client-server architecture to 130+ concurrent users with sub-second application latency.",
     ],
   },
+  {
+    role: "Data Analytics Intern",
+    company: "Mindlink Infotech Pvt Ltd",
+    dates: "Dec 2023 — Jan 2024",
+    location: "Ahmedabad, India",
+    tags: ["Power BI", "DAX", "Data analytics"],
+    description:
+      "Built interactive dashboards to improve reporting and accelerate decision-making.",
+    highlights: [
+      "Designed and deployed interactive Power BI dashboards for various projects using DAX queries.",
+      "Improved reporting accuracy by 25% and reduced query latency from four seconds to 1.5 seconds, accelerating decision-making by 50%.",
+    ],
+  },
 ];
 
 export const projects = [
