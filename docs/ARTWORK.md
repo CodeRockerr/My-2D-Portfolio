@@ -13,7 +13,7 @@ The room is 1536 × 1024 and is always fitted in full within the game viewport. 
 
 The character is a 1254 × 1254 RGBA image, delivered as lossless WebP. One 4 × 4 sheet supplies every direction: down, left, right and up in successive rows. Columns provide neutral, contact, passing and opposite-contact poses. All directions share the same head, outfit and proportions. The runtime measures frame placement using recorded alpha bounds, normalizing visible height to 132 world pixels and the foot baseline to 141 pixels within a 164px avatar box. This compensates for the generated sheet’s uneven padding without altering the original image. The character scales proportionally with the room; navigation text stays readable outside it.
 
-The former eight-frame sheet and separate side-walking sheet remain archived in `docs/art/`, including retired WebP deliveries. They are not used or shipped by the current game. The profile photo remains the supplied photograph.
+The former eight-frame sheet and separate side-walking sheet remain archived in `docs/art/`, including retired WebP deliveries. They are not used or shipped by the current game. The profile portrait is the latest headshot supplied by Adit; its source is recorded below.
 
 ### Unified character prompt
 
@@ -73,3 +73,21 @@ These images are event branding, not generated artwork. They were downloaded unc
 - `public/art/hacknc-2025.png`: ram/game-console mascot from the [HackNC 2025 event listing](https://hacknc-2025.devpost.com/), [original event image](https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/003/837/359/datas/original.png).
 
 The additional WattWatch, StockX and RecipeAI project visuals are decorative HTML/SVG illustrations of their domains, not screenshots or measured performance plots.
+
+## October 2026 achievement assets
+
+These assets are served locally. They are supplied research material or project artwork, not newly generated event logos.
+
+- `public/documents/cppcon-2026-poster.pdf`: byte-identical copy of Adit’s supplied `CppCon26 Poster (7).pdf` (one 4:3 page). The poster belongs to the AEQUITAS project and is distinct from CoughSense’s award poster.
+- `public/art/cppcon-2026-poster.webp`: 2000 × 1500 preview rendered with Poppler from that PDF, converted to WebP at quality 90. The original PDF remains the full-resolution reading/download target.
+- `public/art/mayday-mayor.webp`: 1440 × 900 screenshot from [Mayday Mayor’s repository](https://github.com/darshrank/ready-raleigh/blob/HEAD/docs/screenshots/semantic-zoom/tilted-planning-1440-z15.jpg), converted to WebP at quality 86. It shows the Raleigh planning interface under the prototype name “Ready Raleigh”; the screenshot has not been relabeled or fabricated.
+- `public/art/avatar-logo.webp`: 512 × 512 transparent project mark from [AVATAR’s repository](https://github.com/samarthdshah/HackNC26/blob/HEAD/apps/web/public/avatar-logo-512.png), converted to WebP at quality 90. This is the **project** logo, not HackNC 2026 event branding.
+- Pocket Rivals uses a decorative HTML/CSS title card in Achievements and a three-round Photo / Sketch / Battle cry illustration in Projects, with the user-supplied photo/sketch/battle-cry concept. It is not represented as a screenshot or an official logo.
+
+Repository assets were retrieved October 12, 2026. Their original ownership and licensing remain unchanged; inclusion here does not grant a new license to third-party marks or supplied PDFs.
+
+The Projects grid reuses `mayday-mayor.webp` as a cropped card preview and `avatar-logo.webp` as a contained logo. These images are decorative in the cards because the project name and description are supplied in adjacent accessible text. No new raster assets were generated for the Projects update.
+
+## Current profile portrait
+
+`public/art/adit-portrait.webp` comes from the user-supplied `ChatGPT Image Sep 27, 2026, 03_38_09 PM.png`, supplied October 12, 2026. It is delivered at its original 1254 × 1254 dimensions using WebP quality 90. The image was not regenerated, retouched or cropped. A square CSS frame replaces the previous photo-specific zoom and offset, and the same portrait is used in the in-game About panel and reading view.

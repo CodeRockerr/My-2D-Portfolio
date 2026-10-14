@@ -941,6 +941,33 @@ kbd {
   background: #e1e8e6;
   color: #5c7773;
 }
+.art-duel {
+  background: #f2e6cc;
+  color: #715632;
+}
+.art-duel .flow-cards {
+  gap: 12px;
+}
+.art-duel .flow-cards > span {
+  padding: 12px;
+}
+.art-city {
+  padding: 0;
+}
+.art-city img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.art-avatar {
+  background: #dfeaf0;
+  color: #375d72;
+}
+.art-avatar img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
 .flow-cards {
   display: flex;
   align-items: center;
@@ -1188,7 +1215,7 @@ kbd {
   position: relative;
   margin: 0;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   border: 1px solid #b5c1a4;
   border-radius: 5px;
   overflow: hidden;
@@ -1200,13 +1227,11 @@ kbd {
   height: 100%;
 }
 .about-portrait img {
-  position: absolute;
-  width: 265%;
-  max-width: none;
-  height: auto;
-  left: 57%;
-  top: -120%;
-  transform: translateX(-50%);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .about-portrait:focus-within {
   outline: 3px solid var(--gold);
@@ -3025,8 +3050,45 @@ body[data-page="404"] main {
 .achievement-art-wolfvest {
   background: #dfeaf0;
 }
+.achievement-art-cppcon-2026 {
+  background: #e0eaf2;
+}
+.achievement-art-pocket-rivals {
+  background: #f2e6cc;
+}
+.achievement-art-mayday-mayor {
+  background: #e5e8dc;
+}
+.achievement-art-avatar {
+  background: #dfeaf0;
+}
+.achievement-letterpress {
+  min-height: 280px;
+  padding: 36px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--green);
+  border: 3px double #b4a887;
+  background: #fbf6e8;
+}
+.achievement-letterpress > span {
+  color: #9d5026;
+  font-size: 48px;
+}
+.achievement-letterpress strong {
+  font: 44px/1.05 var(--serif);
+  max-width: 220px;
+  margin: 12px 0;
+}
+.achievement-letterpress p {
+  font: 14px/1.6 var(--mono);
+}
 .achievement-art-wolftrace img,
-.achievement-art-wolfvest img {
+.achievement-art-wolfvest img,
+.achievement-art-avatar img {
   max-height: 280px;
   object-fit: contain;
   background: white;
@@ -3071,8 +3133,14 @@ body[data-page="404"] main {
   font: 12px/1.3 var(--mono);
   margin-top: 8px;
 }
-.achievement-art-wolfvest .achievement-stamp {
+.achievement-art-wolfvest .achievement-stamp,
+.achievement-art-avatar .achievement-stamp {
   font-size: 15px;
+}
+.achievement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
 }
 .achievement-copy h3,
 .station-panel-body .achievement-copy h3 {
@@ -3250,7 +3318,8 @@ body[data-page="404"] main {
     right: 8px;
     top: -20px;
   }
-  .achievement-art-wolfvest .achievement-stamp {
+  .achievement-art-wolfvest .achievement-stamp,
+  .achievement-art-avatar .achievement-stamp {
     font-size: 14px;
   }
   .achievement-copy h3,

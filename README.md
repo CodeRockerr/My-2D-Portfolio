@@ -15,12 +15,12 @@ I’m an MS Computer Science student at North Carolina State University, graduat
 - **Playable homepage:** original top-down environment and directional walking sprites generated with ChatGPT, with four aligned animation frames for each direction. Keyboard movement, click-to-walk paths around furniture, mobile directional controls, a view of the complete room, seven interactive stations and in-game content panels.
 - **Quick access:** clicking an object, numbered marker or section in the navigation dock opens the content immediately. Quick travel also opens any station. The optional `/overview/` reading view presents projects, experience and contact details on one accessible page. Walking animation stays enabled, with no on/off control. System reduced-motion preferences still suppress decorative CSS motion and smooth scrolling.
 - **AEQUITAS:** a dedicated project page for the quantitative research platform and its C++20/pybind11 feature-engineering work, with a small interactive rolling-mean explainer using synthetic data.
-- **Selected projects:** CoughSense, WolfTrace, WolfVest, ongoing C++ Game Engine Foundations coursework, and undergraduate projects WattWatch, StockX and RecipeAI. Each has a distinct visual, technology tags and accessible details; filters cover AI applications, embedded AI, C++, IoT/mobile and quantitative data.
+- **Selected projects:** ten entries covering CoughSense, WolfTrace, WolfVest, ongoing C++ Game Engine Foundations coursework, undergraduate projects WattWatch, StockX and RecipeAI, and Pocket Rivals, Mayday Mayor and AVATAR. Each has a distinct visual, technology tags and accessible details; filters cover AI applications, embedded AI, C++, IoT/mobile, quantitative data and games/interaction. New team projects use a “Team project” heading without inferring individual contributions. AEQUITAS remains separate.
 - **Professional experience:** four internships across NC State research, a startup, business software and IoT applications.
-- **Achievements:** the trophy station and `/achievements/` present the poster and both hackathon awards as image-and-story features, plus WattWatch’s top-five placement among 75 projects at Smart India Hackathon. Hackathon results appear only here, keeping the room and project descriptions focused on exploration and the work itself.
-- **Research and recognition:** WolfTrace’s **2nd Place at HackNCState 2026**, WolfVest’s **Best Use of Snowflake API at HackNC 2025**, and CoughSense’s **Best Poster Award at NC State’s AI Student Symposium 2026**. The research destination separately presents the downloadable poster, publications and Google Scholar.
+- **Achievements:** the trophy station and `/achievements/` share seven image-and-story features: the AEQUITAS CppCon 2026 poster; Pocket Rivals’ Hack_NCState 9/26 HackDay win; Mayday Mayor’s 3rd Place and Best Use of Solana at WolfHacks 2026; AVATAR’s Best Use of Snowflake API at HackNC 2026; and the three earlier awards below. WattWatch’s top-five placement among 75 projects at Smart India Hackathon remains a separate milestone. Hackathon results appear only here, keeping the room and project descriptions focused on exploration and the work itself.
+- **Research and recognition:** WolfTrace’s **2nd Place at HackNCState 2026**, WolfVest’s **Best Use of Snowflake API at HackNC 2025**, and CoughSense’s **Best Poster Award at NC State’s AI Student Symposium 2026**. The research destination separately presents both downloadable research posters, publications and Google Scholar.
 - **Contact:** both `ashah45@ncsu.edu` and `shahadit62@gmail.com` in the footer, a résumé view/download callout, and an always-visible Contact Adit shortcut and mailbox station with direct email, LinkedIn, copyable email address and a link to feedback. `/contact/` works as a standalone page.
-- **CppCon:** a permanent landing page connecting the conference presentation to AEQUITAS without making the entire portfolio conference-specific.
+- **CppCon:** a permanent landing page with the actual AEQUITAS poster preview, full-resolution PDF and download. Poster actions also appear in Achievements, AEQUITAS and Research.
 - **Private feedback:** an optional Formspree integration with validation, timeout handling, an anti-spam honeypot and a clearly labeled email-draft fallback.
 - **Direct access:** résumé download, contact links, semantic content, page-specific metadata, social previews, canonical URLs, sitemap and robots file.
 
@@ -117,7 +117,7 @@ vite-project/
 │   └── feedback.js            # Feedback form UI
 ├── public/
 │   ├── art/                  # Optimized WebP environment, sprites and poster preview
-│   └── documents/            # Résumé and CoughSense poster PDFs
+│   └── documents/            # Résumé, CoughSense and CppCon poster PDFs
 ├── tests/                    # Unit and desktop/mobile browser tests
 ├── vite.config.js            # Static rendering, build entries and sitemap generation
 ├── playwright.config.js      # Mocked provider and unconfigured test servers
@@ -140,10 +140,12 @@ docs/
 - Update reading-view colors and spacing in `src/styles.css`; game layout and controls live in `src/game.css`.
 - Edit station locations, approach points, interaction bounds and collision bounds together in `src/game-world.js` when replacing the map. The pathfinding tests verify that all stations remain reachable.
 - Replace `public/documents/adit-shah-resume.pdf` when the résumé changes; existing links continue working.
-- The About section uses the supplied LinkedIn photo. The original image is presented through a CSS portrait frame; clicking it opens the full photo.
+- The About section uses the latest supplied square headshot, delivered as `public/art/adit-portrait.webp`. Its square frame shows the full portrait; clicking it opens the full-size WebP.
 - The résumé QR points directly to the portfolio-hosted PDF, not GitHub. SVG and downloadable PNG versions are regenerated by `predev` and `prebuild` using `VITE_SITE_URL` (or `profile.siteUrl`) and `profile.resume`. Run `npm --prefix vite-project run qr:generate` to regenerate them manually. Replacing the PDF at the same URL does not require a new QR.
 - A QR scan opens the public website, even while viewing the local preview. Deploy the PDF before sharing the new QR. Already distributed copies of the old QR retain their original destination.
-- Add the CppCon poster PDF and repository URLs when ready. The supplied CoughSense poster is a separate research presentation.
+- Edit recognition records in `src/content.js` (`awards`) and the shared CppCon artifact in `cppconPoster`. Each record provides its stamp, image or typographic card, and link or project-dialog action. Preserve the difference between presentations and prizes, and between the 2025 and 2026 Snowflake awards.
+- Pocket Rivals currently has a private repository. Its achievement and project details offer email contact actions; switch to a GitHub link only after the repository becomes public. CoughSense, WolfTrace, WolfVest, StockX, WattWatch, RecipeAI, Mayday Mayor and AVATAR have GitHub actions in their project details. CoughSense also retains its research/poster link.
+- The original CppCon PDF is hosted at `public/documents/cppcon-2026-poster.pdf`; its preview lives at `public/art/cppcon-2026-poster.webp`. Update both together when the poster changes. CoughSense is a separate research presentation.
 - The game-engine project is explicitly **in progress**. No finished features or benchmarks are claimed.
 
 The interactive feature explainer uses synthetic prices and JavaScript calculations. It does **not** execute the AEQUITAS extension, display real market data or benchmark native C++.
@@ -191,7 +193,7 @@ Before your own commit, manually check:
 
 1. Explore the game on a phone and desktop; try every station, quick travel and the optional reading view.
 2. Use keyboard navigation, project filters and Escape to close dialogs.
-3. Confirm the résumé, research poster and professional links.
+3. Confirm the résumé, both research posters, achievement actions and professional links.
 4. Try the feature slider on the AEQUITAS page.
 5. Once configured, send one real feedback submission and confirm it in your private Formspree inbox.
 6. Review all dates, project descriptions and the content items listed in [Content notes](docs/CONTENT_NOTES.md).
@@ -218,4 +220,4 @@ The top-down game map, directional walking sprites and optional isometric scene 
 
 The original portfolio used Kaboom and referenced [jslegenddev’s tutorials](https://youtube.com/@jslegenddev). Its source and assets are preserved in `docs/legacy/` for reference and are not part of the production bundle. The previous repository’s `monogram.ttf` provides the pixel typography for game controls and panel headings; longer body text uses system fonts.
 
-The résumé and CoughSense poster were provided by Adit Shah. The poster credits **Adit Shah, Darsh Rank and Pratham Patel**. Third-party marks within that supplied document belong to their respective owners. No new license is implied for these materials.
+The résumé, CppCon poster and CoughSense poster were provided by Adit Shah. The CoughSense poster credits **Adit Shah, Darsh Rank and Pratham Patel**. Mayday Mayor’s screenshot and AVATAR’s logo come from the linked project repositories; exact sources and conversion settings are recorded in [Artwork](docs/ARTWORK.md). Third-party marks within that supplied document belong to their respective owners. No new license is implied for these materials.

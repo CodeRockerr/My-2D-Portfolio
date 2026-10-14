@@ -220,7 +220,7 @@ test("walking stays enabled without a motion toggle and navigation remains avail
   await page.keyboard.up("ArrowRight");
   expect(frames.length).toBeGreaterThanOrEqual(4);
   await openStation(page, "projects");
-  await expect(page.locator(".project-card:visible")).toHaveCount(7);
+  await expect(page.locator(".project-card:visible")).toHaveCount(10);
 });
 
 test("the game offers a complete reading path without JavaScript", async ({
