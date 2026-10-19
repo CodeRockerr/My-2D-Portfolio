@@ -16,7 +16,7 @@ I’m an MS Computer Science student at North Carolina State University, graduat
 - **Quick access:** clicking an object, numbered marker or section in the navigation dock opens the content immediately. Quick travel also opens any station. The optional `/overview/` reading view presents projects, experience and contact details on one accessible page. Walking animation stays enabled, with no on/off control. System reduced-motion preferences still suppress decorative CSS motion and smooth scrolling.
 - **AEQUITAS:** a dedicated project page for the quantitative research platform and its C++20/pybind11 feature-engineering work, with a small interactive rolling-mean explainer using synthetic data.
 - **Selected projects:** ten entries covering CoughSense, WolfTrace, WolfVest, ongoing C++ Game Engine Foundations coursework, undergraduate projects WattWatch, StockX and RecipeAI, and Pocket Rivals, Mayday Mayor and AVATAR. Each has a distinct visual, technology tags and accessible details; filters cover AI applications, embedded AI, C++, IoT/mobile, quantitative data and games/interaction. New team projects use a “Team project” heading without inferring individual contributions. AEQUITAS remains separate.
-- **Professional experience:** four internships across NC State research, a startup, business software and IoT applications.
+- **Professional experience:** five internships across NC State research, a startup, business software, IoT applications and data analytics.
 - **Achievements:** the trophy station and `/achievements/` share seven image-and-story features: the AEQUITAS CppCon 2026 poster; Pocket Rivals’ Hack_NCState 9/26 HackDay win; Mayday Mayor’s 3rd Place and Best Use of Solana at WolfHacks 2026; AVATAR’s Best Use of Snowflake API at HackNC 2026; and the three earlier awards below. WattWatch’s top-five placement among 75 projects at Smart India Hackathon remains a separate milestone. Hackathon results appear only here, keeping the room and project descriptions focused on exploration and the work itself.
 - **Research and recognition:** WolfTrace’s **2nd Place at HackNCState 2026**, WolfVest’s **Best Use of Snowflake API at HackNC 2025**, and CoughSense’s **Best Poster Award at NC State’s AI Student Symposium 2026**. The research destination separately presents both downloadable research posters, publications and Google Scholar.
 - **Contact:** both `ashah45@ncsu.edu` and `shahadit62@gmail.com` in the footer, a résumé view/download callout, and an always-visible Contact Adit shortcut and mailbox station with direct email, LinkedIn, copyable email address and a link to feedback. `/contact/` works as a standalone page.
@@ -25,6 +25,33 @@ I’m an MS Computer Science student at North Carolina State University, graduat
 - **Direct access:** résumé download, contact links, semantic content, page-specific metadata, social previews, canonical URLs, sitemap and robots file.
 
 **PostHog is intentionally not installed.** This version includes no analytics SDK, session recording or tracking events. Setup guidance for a later integration is in [Service setup](docs/SERVICE_SETUP.md).
+
+## Projects and achievements
+
+The Projects station and reading view include ten filterable projects. The latest additions are:
+
+| Project | What it does | Project access |
+| --- | --- | --- |
+| **Pocket Rivals** | A two-player phone game that turns photos, sketches and battle cries into personalized gear with Gemini. Socket.IO synchronizes play, and server rules determine combat outcomes. | Private repository; [ask about the project](mailto:ashah45@ncsu.edu?subject=Pocket%20Rivals) |
+| **Mayday Mayor** | A multiplayer disaster-planning game using real city data. Players plan shelters, evacuation pickups and road protection; a planner view aggregates decisions, which are also recorded on Solana devnet. | [GitHub](https://github.com/darshrank/ready-raleigh) |
+| **AVATAR** | An iMessage assistant that routes workplace requests, learns from redirects and coordinates approvals. The team prototype uses simulated company data, Snowflake access controls and a live workflow dashboard. | [GitHub](https://github.com/samarthdshah/HackNC26) |
+
+These additions are presented as team projects. The catalog also includes CoughSense, WolfTrace, WolfVest, WattWatch, StockX, RecipeAI and the in-progress C++ game-engine coursework. AEQUITAS has its own station and dedicated page.
+
+The Achievements station and `/achievements/` present seven features, with WattWatch shown as a separate milestone:
+
+| Project | Recognition | Event |
+| --- | --- | --- |
+| AEQUITAS | Poster presentation | CppCon 2026 |
+| Pocket Rivals | HackDay Winner | Hack_NCState 9/26 HackDay, 2026 |
+| Mayday Mayor | 3rd Place & Best Use of Solana | WolfHacks 2026 |
+| AVATAR | Best Use of Snowflake API | HackNC 2026 |
+| CoughSense | Best Poster Award | NC State AI Student Symposium 2026 |
+| WolfTrace | 2nd Place | HackNCState 2026 |
+| WolfVest | Best Use of Snowflake API | HackNC 2025 |
+| WattWatch | Top 5 of 75 projects | Smart India Hackathon |
+
+The CppCon feature links to the AEQUITAS poster preview and downloadable PDF. Mayday Mayor uses a project screenshot, AVATAR uses its project logo, and Pocket Rivals uses a typographic card with an email action. Hackathon results stay in Achievements; project cards and dialogs describe the work and technology.
 
 ## Run locally
 
