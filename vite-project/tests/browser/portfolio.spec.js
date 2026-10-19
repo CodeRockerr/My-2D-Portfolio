@@ -10,7 +10,7 @@ test("reading view, filters, dialogs and downloads work", async ({
     "Curious mind.",
   );
   await expect(page.locator(".studio-art")).toBeVisible();
-  await expect(page.locator(".project-card:visible")).toHaveCount(7);
+  await expect(page.locator(".project-card:visible")).toHaveCount(10);
   await page
     .getByRole("button", { name: "C++ & systems", exact: true })
     .click();
@@ -22,7 +22,7 @@ test("reading view, filters, dialogs and downloads work", async ({
   await page.getByRole("button", { name: "Close project details" }).click();
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await page.getByRole("button", { name: "All projects", exact: true }).click();
-  await expect(page.locator(".project-card:visible")).toHaveCount(7);
+  await expect(page.locator(".project-card:visible")).toHaveCount(10);
   for (const path of [
     "/documents/adit-shah-resume.pdf",
     "/documents/coughsense-poster.pdf",

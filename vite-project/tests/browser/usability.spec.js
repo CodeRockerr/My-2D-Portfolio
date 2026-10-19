@@ -111,7 +111,7 @@ test("both hackathon awards appear exclusively in achievements", async ({
   for (const path of ["/achievements/", "/#research"]) {
     await page.goto(path);
     const cards = page.locator(".achievement-story");
-    await expect(cards).toHaveCount(3);
+    await expect(cards).toHaveCount(7);
     await expect(cards.filter({ hasText: "HackNCState 2026" })).toContainText(
       "2nd Place",
     );

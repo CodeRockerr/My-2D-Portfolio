@@ -7,7 +7,7 @@ test("hackathon results stay in the dedicated achievements panel", async ({
   await expect(page.locator(".game-screen")).not.toContainText("HackNC");
   await page.locator('.station-dock [data-open-station="research"]').click();
   await expect(page.locator("#station-panel-title")).toHaveText("Achievements");
-  await expect(page.locator(".achievement-story")).toHaveCount(3);
+  await expect(page.locator(".achievement-story")).toHaveCount(7);
   await expect(
     page.locator(".achievement-story").filter({ hasText: "HackNCState 2026" }),
   ).toContainText("HackNCState 2026");
