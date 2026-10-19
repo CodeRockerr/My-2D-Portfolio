@@ -227,7 +227,11 @@ Before your own commit, manually check:
 
 ## Deployment
 
-The existing public URL can stay the same. For a Vercel project, use:
+The existing public URL can stay the same. Vercel can build from the repository root using the root `vercel.json`, which installs application dependencies with `npm --prefix vite-project ci --include=dev`, runs `npm run build` and publishes `vite-project/dist`. A root-only `npm install` does not install the nested application's dependencies and will cause the résumé QR prebuild script to fail with `ERR_MODULE_NOT_FOUND`.
+
+For this repository-root configuration, leave Vercel's Root Directory empty and clear dashboard overrides for Install Command, Build Command and Output Directory so the checked-in configuration applies.
+
+Alternatively, if the Vercel project uses `vite-project` as its Root Directory, its nested `vercel.json` supports these settings:
 
 | Setting          | Value           |
 | ---------------- | --------------- |
